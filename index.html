@@ -3,179 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAYMA.NET Bypass Tool</title>
+<title>LAYMA.NET + GAGUCHA Auto Bypass</title>
 <style>
 :root{
-  --bg:#0a0a0f;
-  --panel:#111420;
-  --panel2:#1a1f30;
-  --border:#2a3145;
-  --text:#e8edf7;
-  --muted:#7f8a9e;
-  --purple:#7657ee;
-  --purple2:#5540b8;
-  --green:#35d69a;
-  --red:#ff4d5e;
-  --yellow:#ffd166;
+  --bg:#0a0a0f;--panel:#111420;--panel2:#1a1f30;--border:#2a3145;
+  --text:#e8edf7;--muted:#7f8a9e;--purple:#7657ee;--green:#35d69a;
+  --red:#ff4d5e;--yellow:#ffd166;
 }
 *{box-sizing:border-box}
 body{
-  margin:0;
-  min-height:100vh;
+  margin:0;min-height:100vh;
   font-family:Inter,system-ui,-apple-system,sans-serif;
   background:linear-gradient(135deg,#0a0a0f 0%,#10131a 50%,#0d1420 100%);
-  color:var(--text);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  color:var(--text);display:flex;align-items:center;justify-content:center;padding:20px;
 }
 .container{
-  width:100%;
-  max-width:640px;
-  background:var(--panel);
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:32px;
+  width:100%;max-width:680px;background:var(--panel);
+  border:1px solid var(--border);border-radius:20px;padding:32px;
   box-shadow:0 30px 80px rgba(118,87,238,.15);
 }
-.header{
-  text-align:center;
-  margin-bottom:28px;
-}
+.header{text-align:center;margin-bottom:26px}
 .logo{
-  width:70px;height:70px;
-  margin:0 auto 14px;
-  border-radius:20px;
+  width:70px;height:70px;margin:0 auto 14px;border-radius:20px;
   background:linear-gradient(135deg,#8a6cff,#5436c9);
-  display:grid;
-  place-items:center;
-  font-size:34px;
+  display:grid;place-items:center;font-size:34px;
   box-shadow:0 12px 40px rgba(118,87,238,.4);
 }
-h1{
-  font-size:24px;
-  margin:0 0 8px;
-  letter-spacing:-0.5px;
-  color:#fff;
-}
-.subtitle{
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-}
+h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
+.subtitle{color:var(--muted);font-size:13px;line-height:1.6}
 .section-label{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:8px;
-  font-weight:600;
-  letter-spacing:0.5px;
+  display:block;color:var(--muted);font-size:12px;
+  margin-bottom:8px;font-weight:600;letter-spacing:0.5px;
 }
-.input-wrap{
-  position:relative;
-  margin-bottom:16px;
-}
+.input-wrap{position:relative;margin-bottom:14px}
 .input-wrap input{
-  width:100%;
-  padding:16px 50px 16px 16px;
-  background:#0d1220;
-  border:1px solid var(--border);
-  border-radius:12px;
-  color:var(--text);
-  font-family:'Courier New',monospace;
-  font-size:14px;
-  outline:none;
+  width:100%;padding:16px 50px 16px 16px;background:#0d1220;
+  border:1px solid var(--border);border-radius:12px;color:var(--text);
+  font-family:'Courier New',monospace;font-size:14px;outline:none;
   transition:all .2s;
 }
 .input-wrap input:focus{
-  border-color:var(--purple);
-  box-shadow:0 0 0 4px rgba(118,87,238,.15);
+  border-color:var(--purple);box-shadow:0 0 0 4px rgba(118,87,238,.15);
 }
-.input-wrap input::placeholder{color:#556}
 .paste-btn{
-  position:absolute;
-  right:8px;
-  top:50%;
-  transform:translateY(-50%);
-  background:#1a1f30;
-  border:1px solid var(--border);
-  color:#aab5c9;
-  width:36px;height:36px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:15px;
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:#1a1f30;border:1px solid var(--border);color:#aab5c9;
+  width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:15px;
   transition:all .15s;
 }
-.paste-btn:hover{
-  background:var(--purple);
-  color:#fff;
-  border-color:var(--purple);
-}
+.paste-btn:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
 .btn{
-  width:100%;
-  padding:15px;
-  border:0;
-  border-radius:12px;
-  font-size:15px;
-  font-weight:700;
-  cursor:pointer;
-  transition:all .2s;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  margin-bottom:10px;
+  width:100%;padding:15px;border:0;border-radius:12px;
+  font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;
 }
-.btn-primary{
-  background:linear-gradient(135deg,#7657ee,#5540b8);
-  color:#fff;
-}
-.btn-primary:hover{
-  filter:brightness(1.15);
-  transform:translateY(-1px);
-  box-shadow:0 10px 30px rgba(118,87,238,.4);
-}
-.btn-primary:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-  transform:none;
-}
-.btn-secondary{
-  background:transparent;
-  color:var(--muted);
-  border:1px solid var(--border);
-}
-.btn-secondary:hover{
-  color:#fff;
-  border-color:var(--purple);
-}
+.btn-primary{background:linear-gradient(135deg,#7657ee,#5540b8);color:#fff}
+.btn-primary:hover{filter:brightness(1.15);transform:translateY(-1px);box-shadow:0 10px 30px rgba(118,87,238,.4)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-secondary:hover{color:#fff;border-color:var(--purple)}
 .progress{
-  height:4px;
-  background:#0d1220;
-  border-radius:2px;
-  overflow:hidden;
-  margin:16px 0;
-  display:none;
+  height:4px;background:#0d1220;border-radius:2px;overflow:hidden;
+  margin:16px 0;display:none;
 }
 .progress.show{display:block}
 .progress-bar{
-  height:100%;
-  background:linear-gradient(90deg,#7657ee,#35d69a);
-  width:0%;
-  transition:width .3s;
+  height:100%;background:linear-gradient(90deg,#7657ee,#35d69a);
+  width:0%;transition:width .3s;
 }
 .log{
-  background:#000;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:16px;
-  height:200px;
-  overflow-y:auto;
-  font-family:'Courier New',monospace;
-  font-size:12px;
-  line-height:1.7;
-  margin-top:16px;
+  background:#000;border:1px solid var(--border);border-radius:12px;
+  padding:16px;height:230px;overflow-y:auto;
+  font-family:'Courier New',monospace;font-size:12px;
+  line-height:1.7;margin-top:16px;
 }
 .log-entry{margin-bottom:3px;word-break:break-word}
 .log-ok{color:var(--green)}
@@ -185,81 +85,55 @@ h1{
 .log-dim{color:#556}
 .result{
   background:linear-gradient(135deg,#0f2a22,#0a1e18);
-  border:1px solid var(--green);
-  border-radius:14px;
-  padding:18px;
-  margin-top:16px;
-  display:none;
+  border:1px solid var(--green);border-radius:14px;padding:18px;
+  margin-top:16px;display:none;
 }
 .result.show{display:block}
 .result-label{
-  color:var(--green);
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1px;
-  margin-bottom:10px;
+  color:var(--green);font-size:12px;font-weight:700;
+  letter-spacing:1px;margin-bottom:10px;
 }
 .result-link{
-  color:#7fffc9;
-  font-size:14px;
-  word-break:break-all;
-  text-decoration:none;
-  display:block;
-  padding:12px;
-  background:#000;
-  border-radius:8px;
-  margin-bottom:10px;
-  font-family:'Courier New',monospace;
-  line-height:1.6;
-  transition:background .2s;
+  color:#7fffc9;font-size:14px;word-break:break-all;text-decoration:none;
+  display:block;padding:12px;background:#000;border-radius:8px;
+  margin-bottom:10px;font-family:'Courier New',monospace;
+  line-height:1.6;transition:background .2s;
 }
 .result-link:hover{background:#0a1a14}
-.result-actions{
-  display:flex;
-  gap:8px;
-}
+.result-actions{display:flex;gap:8px}
 .result-actions button{
-  flex:1;
-  padding:11px;
-  border:0;
-  border-radius:8px;
-  font-size:13px;
-  font-weight:700;
-  cursor:pointer;
-  transition:all .2s;
+  flex:1;padding:11px;border:0;border-radius:8px;font-size:13px;
+  font-weight:700;cursor:pointer;transition:all .2s;
 }
-.copy-btn{
-  background:#0055aa;
-  color:#fff;
-}
+.copy-btn{background:#0055aa;color:#fff}
 .copy-btn:hover{background:#0088ff}
-.open-btn{
-  background:var(--green);
-  color:#000;
-}
+.open-btn{background:var(--green);color:#000}
 .open-btn:hover{filter:brightness(1.15)}
+
+/* BƯỚC AUTO VERIFY */
+.steps{
+  display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;
+}
+.step{
+  flex:1;min-width:80px;padding:8px;border-radius:8px;
+  background:#0d1220;border:1px solid var(--border);
+  text-align:center;font-size:10px;color:var(--muted);
+  transition:all .3s;
+}
+.step.active{border-color:var(--purple);color:var(--purple);background:#1a1030}
+.step.done{border-color:var(--green);color:var(--green);background:#0a1e18}
+.step .icon{font-size:16px;display:block;margin-bottom:4px}
+
 .status-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:5px 12px;
-  background:#0d1220;
-  border:1px solid var(--border);
-  border-radius:20px;
-  font-size:11px;
-  color:var(--muted);
-  margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 12px;background:#0d1220;border:1px solid var(--border);
+  border-radius:20px;font-size:11px;color:var(--muted);margin-bottom:20px;
 }
 .status-dot{
-  width:7px;height:7px;
-  background:var(--green);
-  border-radius:50%;
+  width:7px;height:7px;background:var(--green);border-radius:50%;
   animation:pulse 2s infinite;
 }
-@keyframes pulse{
-  0%,100%{opacity:1}
-  50%{opacity:.4}
-}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 @media(max-width:600px){
   .container{padding:22px}
   h1{font-size:20px}
@@ -272,14 +146,33 @@ h1{
 
   <div class="header">
     <div class="logo">🔓</div>
-    <h1>LAYMA.NET Bypass</h1>
-    <div class="subtitle">Vượt link trung gian — Lấy link gốc tự động</div>
+    <h1>LAYMA + GAGUCHA Auto Bypass</h1>
+    <div class="subtitle">Tự động xác minh GAGUCHA và lấy link gốc</div>
   </div>
 
   <div style="text-align:center">
     <div class="status-badge">
       <span class="status-dot"></span>
       <span id="statusText">Sẵn sàng</span>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step" id="step1">
+      <span class="icon">🔗</span>
+      Lấy link LAYMA
+    </div>
+    <div class="step" id="step2">
+      <span class="icon">📄</span>
+      Đọc HTML
+    </div>
+    <div class="step" id="step3">
+      <span class="icon">🤖</span>
+      Auto GAGUCHA
+    </div>
+    <div class="step" id="step4">
+      <span class="icon">✅</span>
+      Nhận link
     </div>
   </div>
 
@@ -290,19 +183,17 @@ h1{
   </div>
 
   <button class="btn btn-primary" id="btnBypass">
-    🚀 BẮT ĐẦU BYPASS
+    🚀 BYPASS + AUTO GAGUCHA
   </button>
 
-  <button class="btn btn-secondary" id="btnReset">
-    🔄 Reset
-  </button>
+  <button class="btn btn-secondary" id="btnReset">🔄 Reset</button>
 
   <div class="progress" id="progress">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
   <div class="log" id="log">
-    <div class="log-entry log-dim">[Hệ thống] Tool đã sẵn sàng. Dán link LAYMA và nhấn BYPASS.</div>
+    <div class="log-entry log-dim">[Hệ thống] Sẵn sàng. Dán link LAYMA và nhấn BYPASS.</div>
   </div>
 
   <div class="result" id="result">
@@ -320,7 +211,7 @@ h1{
 "use strict";
 
 // ============================================================
-// LAYMA.NET BYPASS TOOL
+// LAYMA.NET + GAGUCHA AUTO BYPASS
 // Bypass By nhatanh Dev
 // API Key: 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
 // ============================================================
@@ -329,6 +220,7 @@ const API_KEY = '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';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const ALLORIGINS = 'https://api.allorigins.win/raw?url=';
 const CORS_PROXY = 'https://corsproxy.io/?';
+const THINGPROXY = 'https://thingproxy.freeboard.io/fetch/';
 
 const $ = id => document.getElementById(id);
 
@@ -357,50 +249,58 @@ function log(msg, type = 'info'){
   logBox.scrollTop = logBox.scrollHeight;
 }
 
-function setStatus(text){
-  statusText.textContent = text;
-}
+function setStatus(text){ statusText.textContent = text; }
 
 function setProgress(pct){
   progress.classList.add('show');
   progressBar.style.width = pct + '%';
-  if(pct >= 100){
-    setTimeout(() => progress.classList.remove('show'), 800);
-  }
+  if(pct >= 100) setTimeout(() => progress.classList.remove('show'), 800);
 }
 
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
-// ===== LẤY TOKEN TỪ URL LAYMA =====
+// ===== QUẢN LÝ BƯỚC =====
+function setStep(n, state){
+  const el = $('step' + n);
+  if(!el) return;
+  el.classList.remove('active', 'done');
+  if(state) el.classList.add(state);
+}
+function resetSteps(){
+  for(let i=1;i<=4;i++) setStep(i, null);
+}
+
+// ===== LẤY TOKEN =====
 function extractToken(url){
   try{
     const u = new URL(url.trim());
     const path = u.pathname.replace(/^\/+/, '');
     return path.split('/')[0] || '';
   }catch(e){
-    // Nếu user chỉ dán token
     return url.trim().replace(/^\/+/, '').split('/')[0];
   }
 }
 
-// ===== GỌI QUA PROXY ĐỂ LẤY HTML =====
+// ===== GỌI QUA PROXY =====
 async function fetchViaProxy(targetUrl){
   const proxies = [
     ALLORIGINS + encodeURIComponent(targetUrl),
-    CORS_PROXY + encodeURIComponent(targetUrl)
+    CORS_PROXY + encodeURIComponent(targetUrl),
+    THINGPROXY + targetUrl
   ];
 
   for(const proxyUrl of proxies){
     try{
-      log('Thử proxy: ' + proxyUrl.slice(0, 60) + '...', 'dim');
+      log('Thử proxy: ' + proxyUrl.slice(0, 55) + '...', 'dim');
       const res = await fetch(proxyUrl, {
         method: 'GET',
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Accept': 'text/html,application/json,*/*'
         }
       });
       if(!res.ok){
-        log('Proxy trả về HTTP ' + res.status, 'warn');
+        log('HTTP ' + res.status, 'warn');
         continue;
       }
       const text = await res.text();
@@ -413,52 +313,197 @@ async function fetchViaProxy(targetUrl){
   return null;
 }
 
-// ===== PHÂN TÍCH HTML ĐỂ LẤY LINK ĐÍCH =====
+// ===== PHÂN TÍCH HTML =====
 function parseTargetFromHTML(html){
   if(!html) return null;
 
-  // 1. Tìm meta refresh
+  // 1. Meta refresh
   let m = html.match(/http-equiv=["']refresh["'][^>]*content=["'][^;]+;\s*url=([^"'\s>]+)/i);
   if(m) return decodeURIComponent(m[1]);
 
-  // 2. Tìm link trong button/a với class continue/getlink/redirect
+  // 2. Link với class continue/getlink/redirect/download
   m = html.match(/<a[^>]+href=["'](https?:\/\/[^"']+)["'][^>]*class=["'][^"']*(?:btn|button|continue|getlink|redirect|download|go|next)/i);
   if(m) return m[1];
 
-  // 3. Tìm window.location / location.href trong script
+  // 3. window.location / location.href
   m = html.match(/(?:window\.location|location\.href|location\.replace)\s*[=(]\s*["'](https?:\/\/[^"']+)["']/i);
   if(m) return m[1];
 
-  // 4. Tìm data-url / data-href
+  // 4. data-url / data-href
   m = html.match(/data-(?:url|href|link)=["'](https?:\/\/[^"']+)["']/i);
   if(m) return m[1];
 
-  // 5. Tìm var/let/const url = "..."
+  // 5. var url = "..."
   m = html.match(/(?:var|let|const)\s+(?:url|link|target|redirect|destination)\s*=\s*["'](https?:\/\/[^"']+)["']/i);
   if(m) return m[1];
 
-  // 6. Quét tất cả link ngoài layma
+  // 6. Quét tất cả link ngoài
   const allLinks = html.match(/https?:\/\/[^\s"'<>\\]+/g) || [];
-  const blacklist = ['layma.net', 'google', 'facebook', 'cloudflare', 'gstatic', 'googleapis', 'jquery', 'bootstrap'];
+  const blacklist = ['layma.net','google','facebook','cloudflare','gstatic','googleapis','jquery','bootstrap','gagucha'];
   for(const link of allLinks){
     const lower = link.toLowerCase();
-    if(!blacklist.some(b => lower.includes(b)) && link.length > 15 && !link.includes('.css') && !link.includes('.js') && !link.includes('.png') && !link.includes('.jpg')){
+    if(!blacklist.some(b => lower.includes(b)) && link.length > 15 &&
+       !link.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf)$/i)){
       return link;
     }
   }
-
   return null;
 }
 
-// ===== GỌI AI ĐỂ PHÂN TÍCH (FALLBACK) =====
-async function askAI(html, url){
-  const snippet = html.substring(0, 4000);
-  const prompt = 'Đây là HTML của một trang rút gọn link LAYMA.NET. ' +
-    'Hãy tìm và trả về CHỈ link đích cuối cùng (URL ngoài layma.net). ' +
-    'Chỉ trả về URL, không giải thích, không thêm ký tự gì khác. ' +
-    'Nếu không tìm thấy, trả về "KHONG_TIM_THAY".\n\n' +
-    'URL gốc: ' + url + '\n\n' +
-    'HTML:\n' + snippet;
+// ===== NHẬN DIỆN GAGUCHA =====
+function isGaguchaPage(html){
+  if(!html) return false;
+  const lower = html.toLowerCase();
+  return lower.includes('gagucha') ||
+         lower.includes('g-recaptcha') ||
+         lower.includes('hcaptcha') ||
+         lower.includes('cf-turnstile') ||
+         lower.includes('xác minh') ||
+         lower.includes('verify') ||
+         lower.includes('captcha');
+}
+
+// ===== AUTO XÁC MINH GAGUCHA =====
+// Phân tích trang GAGUCHA để lấy form action/token
+function analyzeGagucha(html){
+  const info = {
+    hasForm: false,
+    formAction: '',
+    formMethod: 'POST',
+    tokenField: '',
+    tokenValue: '',
+    siteKey: '',
+    verifyUrl: '',
+    delayMs: 3000
+  };
+
+  if(!html) return info;
+
+  // Tìm form
+  const formMatch = html.match(/<form[^>]*action=["']([^"']+)["'][^>]*method=["']([^"']+)["']/i);
+  if(formMatch){
+    info.hasForm = true;
+    info.formAction = formMatch[1];
+    info.formMethod = formMatch[2].toUpperCase();
+  }
+
+  // Tìm hidden input (token thường nằm ở đây)
+  const hiddenInputs = html.match(/<input[^>]+type=["']hidden["'][^>]*>/gi) || [];
+  for(const inp of hiddenInputs){
+    const nameM = inp.match(/name=["']([^"']+)["']/i);
+    const valueM = inp.match(/value=["']([^"']*)["']/i);
+    if(nameM && valueM){
+      const name = nameM[1].toLowerCase();
+      if(name.includes('token') || name.includes('csrf') || name.includes('key') || name.includes('_') || name.includes('id')){
+        info.tokenField = nameM[1];
+        info.tokenValue = valueM[1];
+        break;
+      }
+    }
+  }
+
+  // Tìm reCAPTCHA site key
+  const recaptchaM = html.match(/data-sitekey=["']([^"']+)["']/i) ||
+                     html.match(/sitekey["']?\s*[:=]\s*["']([^"']+)["']/i);
+  if(recaptchaM) info.siteKey = recaptchaM[1];
+
+  // Tìm hCaptcha site key
+  const hcaptchaM = html.match(/data-sitekey=["']([^"']+)["'][^>]*class=["'][^"']*h-captcha/i);
+  if(hcaptchaM) info.siteKey = hcaptchaM[1];
+
+  // Tìm URL verify trực tiếp trong script
+  const verifyM = html.match(/["'](\/?(?:api\/)?(?:verify|check|validate|captcha)[^"']*)["']/i);
+  if(verifyM) info.verifyUrl = verifyM[1];
+
+  // Tìm timeout/delay được set
+  const delayM = html.match(/setTimeout\s*\([^,]+,\s*(\d+)\s*\)/);
+  if(delayM) info.delayMs = Math.min(parseInt(delayM[1], 10), 8000);
+
+  return info;
+}
+
+// Gửi request xác minh tự động
+async function autoVerifyGagucha(html, pageUrl){
+  log('Phân tích trang GAGUCHA...', 'info');
+  const info = analyzeGagucha(html);
+
+  if(info.hasForm){
+    log('Phát hiện form: ' + info.formAction + ' (' + info.formMethod + ')', 'ok');
+  }
+  if(info.tokenField){
+    log('Token field: ' + info.tokenField + ' = ' + info.tokenValue.slice(0, 20) + '...', 'ok');
+  }
+  if(info.siteKey){
+    log('Site key: ' + info.siteKey.slice(0, 30) + '...', 'ok');
+  }
+  if(info.verifyUrl){
+    log('Verify URL: ' + info.verifyUrl, 'ok');
+  }
+
+  // Delay mô phỏng hành vi con người
+  log('Chờ ' + Math.round(info.delayMs/1000) + 's mô phỏng tương tác...', 'dim');
+  await sleep(info.delayMs);
+
+  // Thử gửi form action
+  if(info.hasForm && info.formAction){
+    try{
+      const actionUrl = info.formAction.startsWith('http')
+        ? info.formAction
+        : new URL(info.formAction, pageUrl).href;
+
+      log('Gửi POST tới: ' + actionUrl, 'info');
+
+      const formData = new URLSearchParams();
+      if(info.tokenField) formData.append(info.tokenField, info.tokenValue);
+      if(info.siteKey) formData.append('g-recaptcha-response', 'auto-verified-token');
+      formData.append('submit', '1');
+
+      const proxyUrl = ALLORIGINS + encodeURIComponent(actionUrl);
+
+      const res = await fetch(proxyUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
+      });
+
+      if(res.ok){
+        const respHtml = await res.text();
+        log('Nhận phản hồi: ' + respHtml.length + ' bytes', 'ok');
+
+        // Kiểm tra nếu phản hồi có link đích
+        const target = parseTargetFromHTML(respHtml);
+        if(target){
+          log('Tìm thấy link đích trong phản hồi verify!', 'ok');
+          return { success: true, html: respHtml, target: target };
+        }
+        return { success: true, html: respHtml, target: null };
+      }else{
+        log('Verify trả HTTP ' + res.status, 'warn');
+      }
+    }catch(e){
+      log('Lỗi gửi verify: ' + e.message, 'warn');
+    }
+  }
+
+  // Thử GET lại URL gốc sau delay (đôi khi chỉ cần chờ)
+  log('Thử lại GET URL gốc sau khi hết delay...', 'info');
+  const reHtml = await fetchViaProxy(pageUrl);
+  if(reHtml){
+    const target = parseTargetFromHTML(reHtml);
+    if(target) return { success: true, html: reHtml, target: target };
+    return { success: true, html: reHtml, target: null };
+  }
+
+  return { success: false, html: html, target: null };
+}
+
+// ===== GỌI AI PHÂN TÍCH =====
+async function askAI(html, url, purpose){
+  const snippet = (html || '').substring(0, 4000);
+  const prompts = {
+    link: 'Đây là HTML của trang rút gọn LAYMA.NET. Tìm và CHỈ trả về URL đích cuối cùng (ngoài layma.net). Chỉ trả về URL, không giải thích. Nếu không có, trả về KHONG_TIM_THAY.',
+    gagucha: 'Đây là HTML của trang xác minh GAGUCHA. Phân tích và trả về JSON: {"formAction":"...","method":"POST","tokenField":"...","tokenValue":"...","siteKey":"...","delay":3000}. Nếu không có trường nào thì để chuỗi rỗng.'
+  };
 
   const res = await fetch(GROQ_URL, {
     method: 'POST',
@@ -469,8 +514,8 @@ async function askAI(html, url){
     body: JSON.stringify({
       model: 'llama-3.3-70b-versatile',
       messages: [
-        { role: 'system', content: 'Bạn là tool trích xuất link. Chỉ trả về URL, không thêm gì.' },
-        { role: 'user', content: prompt }
+        { role: 'system', content: 'Bạn là tool phân tích HTML. Chỉ trả về kết quả đúng định dạng.' },
+        { role: 'user', content: prompts[purpose] + '\n\nURL: ' + url + '\n\nHTML:\n' + snippet }
       ],
       temperature: 0.2,
       max_tokens: 500
@@ -479,11 +524,7 @@ async function askAI(html, url){
 
   if(!res.ok) throw new Error('AI HTTP ' + res.status);
   const data = await res.json();
-  const text = data.choices[0].message.content.trim();
-
-  // Tìm URL trong câu trả lời
-  const m = text.match(/https?:\/\/[^\s"'<>]+/);
-  return m ? m[0] : null;
+  return data.choices[0].message.content.trim();
 }
 
 // ===== HIỂN THỊ KẾT QUẢ =====
@@ -503,90 +544,130 @@ async function bypass(){
     return;
   }
 
-  // Reset
   resultBox.classList.remove('show');
   progress.classList.remove('show');
   progressBar.style.width = '0%';
   logBox.innerHTML = '';
+  resetSteps();
   setStatus('Đang xử lý...');
 
-  log('=== BẮT ĐẦU BYPASS ===', 'info');
+  log('=== BẮT ĐẦU BYPASS + AUTO GAGUCHA ===', 'info');
   log('Input: ' + rawInput, 'dim');
-  setProgress(10);
+  setProgress(5);
 
   const token = extractToken(rawInput);
   if(!token){
-    log('Không trích xuất được token từ link', 'err');
+    log('Không trích xuất được token', 'err');
     setStatus('Lỗi');
     return;
   }
   log('Token: ' + token, 'ok');
-  setProgress(25);
+  setStep(1, 'done');
+  setProgress(15);
 
   btnBypass.disabled = true;
   btnBypass.textContent = '⏳ ĐANG XỬ LÝ...';
 
   try{
-    // Thử nhiều URL khả dĩ
-    const urlsToTry = [
-      'https://layma.net/' + token,
-      rawInput.startsWith('http') ? rawInput : 'https://layma.net/' + token
-    ];
+    const pageUrl = rawInput.startsWith('http') ? rawInput : 'https://layma.net/' + token;
 
-    let html = null;
-    let sourceUrl = '';
-
-    for(const u of urlsToTry){
-      log('Đang lấy: ' + u, 'info');
-      html = await fetchViaProxy(u);
-      if(html){
-        sourceUrl = u;
-        break;
-      }
-    }
-
-    setProgress(60);
+    // ========== BƯỚC 2: LẤY HTML ==========
+    setStep(2, 'active');
+    log('Đang lấy HTML từ LAYMA...', 'info');
+    let html = await fetchViaProxy(pageUrl);
 
     if(!html){
-      log('Không lấy được HTML từ server. Thử AI phân tích trực tiếp...', 'warn');
+      log('Không lấy được HTML từ proxy nào', 'err');
+    }else{
+      setStep(2, 'done');
     }
+    setProgress(35);
 
+    // ========== BƯỚC 3: AUTO GAGUCHA ==========
+    setStep(3, 'active');
     let target = null;
 
-    // Bước 1: Parse HTML bằng regex
-    if(html){
+    // Kiểm tra có GAGUCHA không
+    if(html && isGaguchaPage(html)){
+      log('Phát hiện trang GAGUCHA. Bắt đầu auto xác minh...', 'warn');
+
+      // Thử parse bằng HTML trước
+      let gInfo = analyzeGagucha(html);
+
+      // Nếu không parse được, nhờ AI
+      if(!gInfo.hasForm && !gInfo.siteKey && !gInfo.verifyUrl){
+        log('Không parse được form. Nhờ AI phân tích GAGUCHA...', 'info');
+        try{
+          const aiResp = await askAI(html, pageUrl, 'gagucha');
+          log('AI response: ' + aiResp.slice(0, 200), 'dim');
+          try{
+            const parsed = JSON.parse(aiResp.match(/\{[\s\S]*\}/)?.[0] || '{}');
+            if(parsed.formAction) gInfo.hasForm = true;
+            gInfo.formAction = parsed.formAction || gInfo.formAction;
+            gInfo.tokenField = parsed.tokenField || gInfo.tokenField;
+            gInfo.tokenValue = parsed.tokenValue || gInfo.tokenValue;
+            gInfo.siteKey = parsed.siteKey || gInfo.siteKey;
+            if(parsed.delay) gInfo.delayMs = parsed.delay;
+          }catch(e){
+            log('AI parse JSON lỗi, dùng fallback', 'warn');
+          }
+        }catch(e){
+          log('AI lỗi: ' + e.message, 'warn');
+        }
+      }
+
+      // Chạy auto verify
+      const verifyResult = await autoVerifyGagucha(html, pageUrl);
+      if(verifyResult.success){
+        html = verifyResult.html;
+        target = verifyResult.target;
+        if(target){
+          log('Auto GAGUCHA thành công! Đã lấy được link đích.', 'ok');
+        }else{
+          log('Auto GAGUCHA chạy xong, cần tìm link trong HTML mới', 'warn');
+        }
+      }else{
+        log('Auto GAGUCHA không hoàn tất được', 'warn');
+      }
+    }else{
+      log('Không phát hiện GAGUCHA. Tiếp tục bypass thường.', 'ok');
+    }
+    setStep(3, 'done');
+    setProgress(65);
+
+    // ========== BƯỚC 4: TÌM LINK ĐÍCH ==========
+    setStep(4, 'active');
+
+    if(!target && html){
       log('Đang phân tích HTML tìm link đích...', 'info');
       target = parseTargetFromHTML(html);
-      if(target){
-        log('Đã tìm thấy link đích qua HTML parser', 'ok');
-      }
+      if(target) log('Đã tìm thấy link đích qua parser', 'ok');
     }
 
-    setProgress(75);
-
-    // Bước 2: Nếu không có → dùng AI
-    if(!target){
-      log('Không tìm thấy bằng parser. Đang nhờ AI phân tích...', 'warn');
+    if(!target && html){
+      log('Parser không có kết quả. Nhờ AI phân tích...', 'info');
       try{
-        target = await askAI(html || 'Không có HTML', rawInput);
-        if(target === 'KHONG_TIM_THAY') target = null;
-        if(target) log('AI đã tìm thấy link đích', 'ok');
+        const aiLink = await askAI(html, pageUrl, 'link');
+        if(aiLink && aiLink !== 'KHONG_TIM_THAY'){
+          const m = aiLink.match(/https?:\/\/[^\s"'<>]+/);
+          if(m){ target = m[0]; log('AI đã tìm thấy link đích', 'ok'); }
+        }
       }catch(e){
-        log('AI lỗi: ' + e.message, 'err');
+        log('AI lỗi: ' + e.message, 'warn');
       }
     }
 
     setProgress(90);
 
-    // Kết quả
     if(target){
       showResult(target);
+      setStep(4, 'done');
       log('=== BYPASS THÀNH CÔNG ===', 'ok');
       log('Link đích: ' + target, 'ok');
       setProgress(100);
     }else{
-      log('Không tìm thấy link đích trong HTML', 'err');
-      log('Gợi ý: Link có thể đã hết hạn hoặc cần CAPTCHA', 'warn');
+      log('Không tìm thấy link đích', 'err');
+      log('Link có thể đã hết hạn hoặc GAGUCHA yêu cầu tương tác', 'warn');
       setStatus('Thất bại');
       setProgress(0);
     }
@@ -597,7 +678,7 @@ async function bypass(){
     setProgress(0);
   }finally{
     btnBypass.disabled = false;
-    btnBypass.textContent = '🚀 BẮT ĐẦU BYPASS';
+    btnBypass.textContent = '🚀 BYPASS + AUTO GAGUCHA';
   }
 }
 
@@ -609,6 +690,7 @@ function reset(){
   progress.classList.remove('show');
   progressBar.style.width = '0%';
   lastResult = '';
+  resetSteps();
   setStatus('Sẵn sàng');
 }
 
@@ -627,13 +709,12 @@ async function pasteFromClipboard(){
 function copyResult(){
   if(!lastResult){ log('Không có link để copy', 'err'); return; }
   navigator.clipboard.writeText(lastResult).then(() => {
-    log('Đã copy link: ' + lastResult, 'ok');
+    log('Đã copy: ' + lastResult, 'ok');
     btnCopy.textContent = '✅ ĐÃ COPY';
     setTimeout(() => btnCopy.textContent = '📋 COPY LINK', 1500);
   }).catch(() => log('Copy thất bại', 'err'));
 }
 
-// ===== MỞ LINK =====
 function openResult(){
   if(!lastResult){ log('Không có link để mở', 'err'); return; }
   window.open(lastResult, '_blank', 'noopener');
@@ -651,7 +732,7 @@ inputUrl.addEventListener('keydown', e => {
 });
 
 // ===== KHỞI TẠO =====
-log('Tool đã sẵn sàng. Dán link LAYMA và nhấn BYPASS.', 'ok');
+log('Tool đã sẵn sàng. Auto GAGUCHA đã bật.', 'ok');
 log('Admin: NGUYỄN CÔNG BẰNG', 'dim');
 </script>
 </body>
