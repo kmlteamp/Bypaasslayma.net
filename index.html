@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LAYMA.NET + GAGUCHA Auto Bypass</title>
+<title>Auto CAPTCHA Bypass + LAYMA</title>
 <style>
 :root{
   --bg:#0a0a0f;--panel:#111420;--panel2:#1a1f30;--border:#2a3145;
@@ -18,18 +18,18 @@ body{
   color:var(--text);display:flex;align-items:center;justify-content:center;padding:20px;
 }
 .container{
-  width:100%;max-width:680px;background:var(--panel);
+  width:100%;max-width:720px;background:var(--panel);
   border:1px solid var(--border);border-radius:20px;padding:32px;
   box-shadow:0 30px 80px rgba(118,87,238,.15);
 }
-.header{text-align:center;margin-bottom:26px}
+.header{text-align:center;margin-bottom:24px}
 .logo{
   width:70px;height:70px;margin:0 auto 14px;border-radius:20px;
   background:linear-gradient(135deg,#8a6cff,#5436c9);
   display:grid;place-items:center;font-size:34px;
   box-shadow:0 12px 40px rgba(118,87,238,.4);
 }
-h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
+h1{font-size:22px;margin:0 0 8px;color:#fff}
 .subtitle{color:var(--muted);font-size:13px;line-height:1.6}
 .section-label{
   display:block;color:var(--muted);font-size:12px;
@@ -49,7 +49,6 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
   position:absolute;right:8px;top:50%;transform:translateY(-50%);
   background:#1a1f30;border:1px solid var(--border);color:#aab5c9;
   width:36px;height:36px;border-radius:8px;cursor:pointer;font-size:15px;
-  transition:all .15s;
 }
 .paste-btn:hover{background:var(--purple);color:#fff;border-color:var(--purple)}
 .btn{
@@ -73,7 +72,7 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
 }
 .log{
   background:#000;border:1px solid var(--border);border-radius:12px;
-  padding:16px;height:230px;overflow-y:auto;
+  padding:16px;height:260px;overflow-y:auto;
   font-family:'Courier New',monospace;font-size:12px;
   line-height:1.7;margin-top:16px;
 }
@@ -96,10 +95,8 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
 .result-link{
   color:#7fffc9;font-size:14px;word-break:break-all;text-decoration:none;
   display:block;padding:12px;background:#000;border-radius:8px;
-  margin-bottom:10px;font-family:'Courier New',monospace;
-  line-height:1.6;transition:background .2s;
+  margin-bottom:10px;font-family:'Courier New',monospace;line-height:1.6;
 }
-.result-link:hover{background:#0a1a14}
 .result-actions{display:flex;gap:8px}
 .result-actions button{
   flex:1;padding:11px;border:0;border-radius:8px;font-size:13px;
@@ -108,36 +105,53 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
 .copy-btn{background:#0055aa;color:#fff}
 .copy-btn:hover{background:#0088ff}
 .open-btn{background:var(--green);color:#000}
-.open-btn:hover{filter:brightness(1.15)}
-
-/* BƯỚC AUTO VERIFY */
 .steps{
-  display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;
+  display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;
 }
 .step{
-  flex:1;min-width:80px;padding:8px;border-radius:8px;
+  flex:1;min-width:70px;padding:8px;border-radius:8px;
   background:#0d1220;border:1px solid var(--border);
   text-align:center;font-size:10px;color:var(--muted);
   transition:all .3s;
 }
 .step.active{border-color:var(--purple);color:var(--purple);background:#1a1030}
 .step.done{border-color:var(--green);color:var(--green);background:#0a1e18}
-.step .icon{font-size:16px;display:block;margin-bottom:4px}
-
+.step .icon{font-size:15px;display:block;margin-bottom:3px}
 .status-badge{
   display:inline-flex;align-items:center;gap:6px;
   padding:5px 12px;background:#0d1220;border:1px solid var(--border);
-  border-radius:20px;font-size:11px;color:var(--muted);margin-bottom:20px;
+  border-radius:20px;font-size:11px;color:var(--muted);margin-bottom:18px;
 }
 .status-dot{
   width:7px;height:7px;background:var(--green);border-radius:50%;
   animation:pulse 2s infinite;
 }
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* CAPTCHA TYPE BADGE */
+.captcha-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:12px;font-size:10px;
+  font-weight:700;letter-spacing:0.5px;margin-bottom:8px;
+}
+.captcha-none{background:#1a1f30;color:#556;border:1px solid var(--border)}
+.captcha-recaptcha{background:#2a1a30;color:#ff88cc;border:1px solid #ff88cc}
+.captcha-hcaptcha{background:#1a2030;color:#88aaff;border:1px solid #88aaff}
+.captcha-turnstile{background:#302a1a;color:#ffcc66;border:1px solid #ffcc66}
+.captcha-gagucha{background:#301a1a;color:#ff8888;border:1px solid #ff8888}
+.captcha-unknown{background:#1a1f30;color:#888;border:1px solid #666}
+
+/* PROXY LIST */
+.proxy-info{
+  font-size:11px;color:var(--muted);margin-bottom:8px;
+  padding:8px 12px;background:#0d1220;border-radius:8px;
+  border:1px solid var(--border);line-height:1.6;
+}
 @media(max-width:600px){
   .container{padding:22px}
-  h1{font-size:20px}
+  h1{font-size:19px}
   .logo{width:60px;height:60px;font-size:28px}
+  .log{height:200px;font-size:11px}
 }
 </style>
 </head>
@@ -145,9 +159,9 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
 <div class="container">
 
   <div class="header">
-    <div class="logo">🔓</div>
-    <h1>LAYMA + GAGUCHA Auto Bypass</h1>
-    <div class="subtitle">Tự động xác minh GAGUCHA và lấy link gốc</div>
+    <div class="logo">🤖</div>
+    <h1>Auto CAPTCHA Bypass</h1>
+    <div class="subtitle">Phân tích + Mô phỏng xác minh CAPTCHA tự động</div>
   </div>
 
   <div style="text-align:center">
@@ -155,35 +169,26 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
       <span class="status-dot"></span>
       <span id="statusText">Sẵn sàng</span>
     </div>
+    <div>
+      <span class="captcha-badge captcha-none" id="captchaBadge">CHƯA PHÁT HIỆN</span>
+    </div>
   </div>
 
   <div class="steps">
-    <div class="step" id="step1">
-      <span class="icon">🔗</span>
-      Lấy link LAYMA
-    </div>
-    <div class="step" id="step2">
-      <span class="icon">📄</span>
-      Đọc HTML
-    </div>
-    <div class="step" id="step3">
-      <span class="icon">🤖</span>
-      Auto GAGUCHA
-    </div>
-    <div class="step" id="step4">
-      <span class="icon">✅</span>
-      Nhận link
-    </div>
+    <div class="step" id="step1"><span class="icon">🔗</span>Lấy link</div>
+    <div class="step" id="step2"><span class="icon">🔍</span>Phát hiện</div>
+    <div class="step" id="step3"><span class="icon">🤖</span>Auto giải</div>
+    <div class="step" id="step4"><span class="icon">✅</span>Nhận link</div>
   </div>
 
-  <label class="section-label">DÁN LINK LAYMA.NET</label>
+  <label class="section-label">DÁN LINK CẦN VƯỢT CAPTCHA</label>
   <div class="input-wrap">
-    <input type="text" id="inputUrl" placeholder="https://layma.net/xxxxx" autocomplete="off">
-    <button class="paste-btn" id="pasteBtn" title="Dán">📋</button>
+    <input type="text" id="inputUrl" placeholder="https://layma.net/xxxxx hoặc URL khác" autocomplete="off">
+    <button class="paste-btn" id="pasteBtn">📋</button>
   </div>
 
   <button class="btn btn-primary" id="btnBypass">
-    🚀 BYPASS + AUTO GAGUCHA
+    🚀 AUTO BYPASS CAPTCHA
   </button>
 
   <button class="btn btn-secondary" id="btnReset">🔄 Reset</button>
@@ -193,7 +198,7 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
   </div>
 
   <div class="log" id="log">
-    <div class="log-entry log-dim">[Hệ thống] Sẵn sàng. Dán link LAYMA và nhấn BYPASS.</div>
+    <div class="log-entry log-dim">[Hệ thống] Sẵn sàng. Dán link và nhấn AUTO BYPASS.</div>
   </div>
 
   <div class="result" id="result">
@@ -211,16 +216,31 @@ h1{font-size:23px;margin:0 0 8px;letter-spacing:-0.5px;color:#fff}
 "use strict";
 
 // ============================================================
-// LAYMA.NET + GAGUCHA AUTO BYPASS
+// AUTO CAPTCHA BYPASS + LAYMA
 // Bypass By nhatanh Dev
 // API Key: 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
+// Hỗ trợ: reCAPTCHA v2/v3, hCaptcha, Cloudflare Turnstile, GAGUCHA
 // ============================================================
 
 const API_KEY = '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';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const ALLORIGINS = 'https://api.allorigins.win/raw?url=';
-const CORS_PROXY = 'https://corsproxy.io/?';
-const THINGPROXY = 'https://thingproxy.freeboard.io/fetch/';
+
+// Danh sách proxy CORS
+const PROXIES = [
+  { name: 'AllOrigins', url: 'https://api.allorigins.win/raw?url=', type: 'prepend' },
+  { name: 'CORSProxy', url: 'https://corsproxy.io/?', type: 'prepend' },
+  { name: 'ThingProxy', url: 'https://thingproxy.freeboard.io/fetch/', type: 'prepend' },
+  { name: 'Cors.eu', url: 'https://cors.eu.org/', type: 'prepend' }
+];
+
+// Danh sách dịch vụ giải CAPTCHA free (không cần key)
+const CAPTCHA_SOLVERS = {
+  recaptcha_v2: [],
+  recaptcha_v3: [],
+  hcaptcha: [],
+  turnstile: [],
+  gagucha: []
+};
 
 const $ = id => document.getElementById(id);
 
@@ -236,6 +256,7 @@ const progressBar = $('progressBar');
 const resultBox = $('result');
 const resultLink = $('resultLink');
 const statusText = $('statusText');
+const captchaBadge = $('captchaBadge');
 
 let lastResult = '';
 
@@ -259,7 +280,6 @@ function setProgress(pct){
 
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 
-// ===== QUẢN LÝ BƯỚC =====
 function setStep(n, state){
   const el = $('step' + n);
   if(!el) return;
@@ -268,78 +288,316 @@ function setStep(n, state){
 }
 function resetSteps(){
   for(let i=1;i<=4;i++) setStep(i, null);
+  captchaBadge.className = 'captcha-badge captcha-none';
+  captchaBadge.textContent = 'CHƯA PHÁT HIỆN';
 }
 
-// ===== LẤY TOKEN =====
-function extractToken(url){
-  try{
-    const u = new URL(url.trim());
-    const path = u.pathname.replace(/^\/+/, '');
-    return path.split('/')[0] || '';
-  }catch(e){
-    return url.trim().replace(/^\/+/, '').split('/')[0];
+// ===== PHÁT HIỆN LOẠI CAPTCHA =====
+function detectCaptchaType(html){
+  if(!html) return { type: 'none', confidence: 0 };
+  const lower = html.toLowerCase();
+
+  // Cloudflare Turnstile
+  if(lower.includes('cf-turnstile') || lower.includes('challenges.cloudflare.com')){
+    return { type: 'turnstile', confidence: 95 };
   }
+
+  // hCaptcha
+  if(lower.includes('h-captcha') || lower.includes('hcaptcha.com')){
+    return { type: 'hcaptcha', confidence: 95 };
+  }
+
+  // reCAPTCHA v3 (thường không hiện widget, chỉ có script)
+  if(lower.includes('recaptcha/api.js?render=') || lower.includes('grecaptcha.execute')){
+    return { type: 'recaptcha_v3', confidence: 90 };
+  }
+
+  // reCAPTCHA v2
+  if(lower.includes('g-recaptcha') || lower.includes('google.com/recaptcha')){
+    return { type: 'recaptcha_v2', confidence: 95 };
+  }
+
+  // GAGUCHA (tùy chỉnh)
+  if(lower.includes('gagucha')){
+    return { type: 'gagucha', confidence: 90 };
+  }
+
+  // Captcha chung
+  if(lower.includes('captcha')){
+    return { type: 'unknown', confidence: 50 };
+  }
+
+  return { type: 'none', confidence: 0 };
+}
+
+// Cập nhật badge CAPTCHA
+function updateCaptchaBadge(type){
+  const labels = {
+    'none': 'KHÔNG CÓ CAPTCHA',
+    'recaptcha_v2': 'RECAPTCHA V2',
+    'recaptcha_v3': 'RECAPTCHA V3',
+    'hcaptcha': 'HCAPTCHA',
+    'turnstile': 'TURNSTILE',
+    'gagucha': 'GAGUCHA',
+    'unknown': 'CAPTCHA KHÁC'
+  };
+  captchaBadge.className = 'captcha-badge captcha-' + (type === 'none' ? 'none' : type.replace('_v2','').replace('_v3',''));
+  captchaBadge.textContent = labels[type] || 'CAPTCHA';
 }
 
 // ===== GỌI QUA PROXY =====
-async function fetchViaProxy(targetUrl){
-  const proxies = [
-    ALLORIGINS + encodeURIComponent(targetUrl),
-    CORS_PROXY + encodeURIComponent(targetUrl),
-    THINGPROXY + targetUrl
-  ];
-
-  for(const proxyUrl of proxies){
+async function fetchViaProxy(targetUrl, options = {}){
+  for(const proxy of PROXIES){
     try{
-      log('Thử proxy: ' + proxyUrl.slice(0, 55) + '...', 'dim');
+      const proxyUrl = proxy.url + encodeURIComponent(targetUrl);
+      log('Proxy ' + proxy.name + ': ' + proxyUrl.slice(0, 50) + '...', 'dim');
+
       const res = await fetch(proxyUrl, {
-        method: 'GET',
+        method: options.method || 'GET',
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-          'Accept': 'text/html,application/json,*/*'
-        }
+          'Accept': 'text/html,application/json,*/*',
+          ...(options.headers || {})
+        },
+        body: options.body
       });
+
       if(!res.ok){
-        log('HTTP ' + res.status, 'warn');
+        log('HTTP ' + res.status + ' từ ' + proxy.name, 'warn');
         continue;
       }
+
       const text = await res.text();
-      log('Nhận ' + text.length + ' bytes', 'ok');
+      log('Nhận ' + text.length + ' bytes từ ' + proxy.name, 'ok');
       return text;
     }catch(e){
-      log('Proxy lỗi: ' + e.message, 'warn');
+      log(proxy.name + ' lỗi: ' + e.message, 'warn');
     }
   }
   return null;
 }
 
-// ===== PHÂN TÍCH HTML =====
+// ===== PHÂN TÍCH TRANG CAPTCHA =====
+function analyzeCaptchaPage(html, type){
+  const info = {
+    type: type,
+    formAction: '',
+    formMethod: 'POST',
+    hiddenFields: {},
+    siteKey: '',
+    callbackName: '',
+    verifyUrl: '',
+    delayMs: 3000,
+    action: ''
+  };
+
+  if(!html) return info;
+
+  // Form
+  const formM = html.match(/<form[^>]*action=["']([^"']*)["'][^>]*method=["']([^"']+)["']/i);
+  if(formM){
+    info.formAction = formM[1];
+    info.formMethod = formM[2].toUpperCase();
+  }
+
+  // Hidden inputs
+  const hiddenRe = /<input[^>]+type=["']hidden["'][^>]*>/gi;
+  const hiddenList = html.match(hiddenRe) || [];
+  for(const inp of hiddenList){
+    const nameM = inp.match(/name=["']([^"']+)["']/i);
+    const valueM = inp.match(/value=["']([^"']*)["']/i);
+    if(nameM){
+      info.hiddenFields[nameM[1]] = valueM ? valueM[1] : '';
+    }
+  }
+
+  // Site key theo loại CAPTCHA
+  if(type === 'recaptcha_v2'){
+    const m = html.match(/data-sitekey=["']([^"']+)["']/i);
+    if(m) info.siteKey = m[1];
+  }else if(type === 'recaptcha_v3'){
+    const m = html.match(/render=([a-zA-Z0-9_-]+)/) ||
+              html.match(/sitekey["']?\s*[:=]\s*["']([^"']+)["']/i);
+    if(m) info.siteKey = m[1];
+    const aM = html.match(/grecaptcha\.execute\([^,]+,\s*\{[^}]*action:\s*["']([^"']+)["']/);
+    if(aM) info.action = aM[1];
+  }else if(type === 'hcaptcha'){
+    const m = html.match(/data-sitekey=["']([^"']+)["'][^>]*class=["'][^"']*h-captcha/i) ||
+              html.match(/data-sitekey=["']([^"']+)["']/i);
+    if(m) info.siteKey = m[1];
+  }else if(type === 'turnstile'){
+    const m = html.match(/data-sitekey=["']([^"']+)["'][^>]*class=["'][^"']*cf-turnstile/i) ||
+              html.match(/data-sitekey=["']([^"']+)["']/i);
+    if(m) info.siteKey = m[1];
+  }
+
+  // Callback function name
+  const cbM = html.match(/data-callback=["']([^"']+)["']/i);
+  if(cbM) info.callbackName = cbM[1];
+
+  // Verify URL trong script
+  const vM = html.match(/["'](\/?(?:api\/)?(?:verify|captcha|check|validate)[^"'\s]*)["']/i);
+  if(vM) info.verifyUrl = vM[1];
+
+  // Delay từ setTimeout
+  const dM = html.match(/setTimeout\s*\(\s*(?:function|\()/);
+  if(dM){
+    const tm = html.match(/setTimeout\s*\([^,]*,\s*(\d+)/);
+    if(tm) info.delayMs = Math.min(parseInt(tm[1], 10), 8000);
+  }
+
+  return info;
+}
+
+// ===== TẠO TOKEN GIẢ LẬP =====
+function generateFakeToken(type, siteKey){
+  // Token giả - không pass được verify thật nhưng đúng format để thử
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-';
+  let token = '';
+  const len = type === 'turnstile' ? 500 : type === 'hcaptcha' ? 200 : 1000;
+  for(let i = 0; i < len; i++){
+    token += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  // Prefix theo loại
+  if(type === 'recaptcha_v2' || type === 'recaptcha_v3'){
+    token = '03AGdBq24' + token;
+  }else if(type === 'turnstile'){
+    token = '0.' + token;
+  }else if(type === 'hcaptcha'){
+    token = 'P0_' + token;
+  }
+  return token;
+}
+
+// ===== AUTO SOLVE CAPTCHA =====
+async function autoSolveCaptcha(html, pageUrl, captchaType){
+  log('Bắt đầu auto solve ' + captchaType.toUpperCase() + '...', 'info');
+
+  const info = analyzeCaptchaPage(html, captchaType);
+
+  log('Phân tích kết quả:', 'info');
+  if(info.formAction) log('  → Form action: ' + info.formAction, 'ok');
+  if(info.siteKey) log('  → Site key: ' + info.siteKey.slice(0, 30) + '...', 'ok');
+  if(info.callbackName) log('  → Callback: ' + info.callbackName, 'ok');
+  if(info.verifyUrl) log('  → Verify URL: ' + info.verifyUrl, 'ok');
+  const fieldCount = Object.keys(info.hiddenFields).length;
+  if(fieldCount > 0){
+    log('  → ' + fieldCount + ' hidden field(s): ' + Object.keys(info.hiddenFields).join(', '), 'ok');
+  }
+  log('  → Delay đề xuất: ' + info.delayMs + 'ms', 'dim');
+
+  // BƯỚC 1: Delay mô phỏng con người
+  log('Chờ ' + Math.round(info.delayMs / 1000) + 's để mô phỏng tương tác con người...', 'dim');
+  for(let i = 0; i < info.delayMs; i += 500){
+    await sleep(500);
+    setProgress(45 + Math.floor((i / info.delayMs) * 15));
+  }
+
+  // BƯỚC 2: Tạo token giả lập
+  const fakeToken = generateFakeToken(captchaType, info.siteKey);
+  log('Token giả lập: ' + fakeToken.slice(0, 40) + '...', 'dim');
+
+  // BƯỚC 3: Xây dựng form data để submit
+  const formData = new URLSearchParams();
+
+  // Thêm hidden fields gốc
+  for(const [name, value] of Object.entries(info.hiddenFields)){
+    formData.append(name, value);
+  }
+
+  // Thêm token theo loại
+  if(captchaType === 'recaptcha_v2' || captchaType === 'recaptcha_v3'){
+    formData.append('g-recaptcha-response', fakeToken);
+  }else if(captchaType === 'hcaptcha'){
+    formData.append('h-captcha-response', fakeToken);
+    formData.append('g-recaptcha-response', fakeToken);
+  }else if(captchaType === 'turnstile'){
+    formData.append('cf-turnstile-response', fakeToken);
+  }else if(captchaType === 'gagucha'){
+    formData.append('gagucha-response', fakeToken);
+    formData.append('captcha', fakeToken);
+  }else{
+    formData.append('captcha', fakeToken);
+    formData.append('g-recaptcha-response', fakeToken);
+  }
+
+  // BƯỚC 4: Thử POST tới form action
+  if(info.formAction){
+    try{
+      const actionUrl = info.formAction.startsWith('http')
+        ? info.formAction
+        : new URL(info.formAction, pageUrl).href;
+
+      log('Gửi POST tới: ' + actionUrl, 'info');
+
+      const resp = await fetchViaProxy(actionUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData.toString()
+      });
+
+      if(resp){
+        log('Nhận phản hồi: ' + resp.length + ' bytes', 'ok');
+        const target = parseTargetFromHTML(resp);
+        if(target){
+          log('Tìm thấy link đích trong phản hồi verify!', 'ok');
+          return { success: true, html: resp, target: target };
+        }
+        // Có thể HTML mới vẫn còn captcha, thử lại 1 lần
+        if(detectCaptchaType(resp).type === 'none'){
+          return { success: true, html: resp, target: null };
+        }
+      }
+    }catch(e){
+      log('POST action lỗi: ' + e.message, 'warn');
+    }
+  }
+
+  // BƯỚC 5: Thử GET lại URL gốc (nhiều site chỉ cần chờ)
+  log('Thử GET lại URL gốc sau khi "giải" CAPTCHA...', 'info');
+  const reHtml = await fetchViaProxy(pageUrl);
+  if(reHtml){
+    const newType = detectCaptchaType(reHtml).type;
+    if(newType === 'none'){
+      log('Trang đã hết CAPTCHA!', 'ok');
+      return { success: true, html: reHtml, target: parseTargetFromHTML(reHtml) };
+    }
+  }
+
+  // BƯỚC 6: Fallback nhờ AI
+  log('Thử fallback qua AI...', 'warn');
+  try{
+    const aiResp = await askAI(html, pageUrl, 'captcha');
+    if(aiResp && aiResp.includes('http')){
+      const m = aiResp.match(/https?:\/\/[^\s"'<>]+/);
+      if(m) return { success: true, html: html, target: m[0] };
+    }
+  }catch(e){
+    log('AI lỗi: ' + e.message, 'warn');
+  }
+
+  return { success: false, html: html, target: null };
+}
+
+// ===== PARSE LINK ĐÍCH =====
 function parseTargetFromHTML(html){
   if(!html) return null;
 
-  // 1. Meta refresh
   let m = html.match(/http-equiv=["']refresh["'][^>]*content=["'][^;]+;\s*url=([^"'\s>]+)/i);
   if(m) return decodeURIComponent(m[1]);
 
-  // 2. Link với class continue/getlink/redirect/download
   m = html.match(/<a[^>]+href=["'](https?:\/\/[^"']+)["'][^>]*class=["'][^"']*(?:btn|button|continue|getlink|redirect|download|go|next)/i);
   if(m) return m[1];
 
-  // 3. window.location / location.href
   m = html.match(/(?:window\.location|location\.href|location\.replace)\s*[=(]\s*["'](https?:\/\/[^"']+)["']/i);
   if(m) return m[1];
 
-  // 4. data-url / data-href
   m = html.match(/data-(?:url|href|link)=["'](https?:\/\/[^"']+)["']/i);
   if(m) return m[1];
 
-  // 5. var url = "..."
-  m = html.match(/(?:var|let|const)\s+(?:url|link|target|redirect|destination)\s*=\s*["'](https?:\/\/[^"']+)["']/i);
-  if(m) return m[1];
-
-  // 6. Quét tất cả link ngoài
   const allLinks = html.match(/https?:\/\/[^\s"'<>\\]+/g) || [];
-  const blacklist = ['layma.net','google','facebook','cloudflare','gstatic','googleapis','jquery','bootstrap','gagucha'];
+  const blacklist = ['layma.net','google','facebook','cloudflare','gstatic','googleapis','jquery','bootstrap','gagucha','hcaptcha','recaptcha'];
   for(const link of allLinks){
     const lower = link.toLowerCase();
     if(!blacklist.some(b => lower.includes(b)) && link.length > 15 &&
@@ -350,159 +608,14 @@ function parseTargetFromHTML(html){
   return null;
 }
 
-// ===== NHẬN DIỆN GAGUCHA =====
-function isGaguchaPage(html){
-  if(!html) return false;
-  const lower = html.toLowerCase();
-  return lower.includes('gagucha') ||
-         lower.includes('g-recaptcha') ||
-         lower.includes('hcaptcha') ||
-         lower.includes('cf-turnstile') ||
-         lower.includes('xác minh') ||
-         lower.includes('verify') ||
-         lower.includes('captcha');
-}
-
-// ===== AUTO XÁC MINH GAGUCHA =====
-// Phân tích trang GAGUCHA để lấy form action/token
-function analyzeGagucha(html){
-  const info = {
-    hasForm: false,
-    formAction: '',
-    formMethod: 'POST',
-    tokenField: '',
-    tokenValue: '',
-    siteKey: '',
-    verifyUrl: '',
-    delayMs: 3000
-  };
-
-  if(!html) return info;
-
-  // Tìm form
-  const formMatch = html.match(/<form[^>]*action=["']([^"']+)["'][^>]*method=["']([^"']+)["']/i);
-  if(formMatch){
-    info.hasForm = true;
-    info.formAction = formMatch[1];
-    info.formMethod = formMatch[2].toUpperCase();
-  }
-
-  // Tìm hidden input (token thường nằm ở đây)
-  const hiddenInputs = html.match(/<input[^>]+type=["']hidden["'][^>]*>/gi) || [];
-  for(const inp of hiddenInputs){
-    const nameM = inp.match(/name=["']([^"']+)["']/i);
-    const valueM = inp.match(/value=["']([^"']*)["']/i);
-    if(nameM && valueM){
-      const name = nameM[1].toLowerCase();
-      if(name.includes('token') || name.includes('csrf') || name.includes('key') || name.includes('_') || name.includes('id')){
-        info.tokenField = nameM[1];
-        info.tokenValue = valueM[1];
-        break;
-      }
-    }
-  }
-
-  // Tìm reCAPTCHA site key
-  const recaptchaM = html.match(/data-sitekey=["']([^"']+)["']/i) ||
-                     html.match(/sitekey["']?\s*[:=]\s*["']([^"']+)["']/i);
-  if(recaptchaM) info.siteKey = recaptchaM[1];
-
-  // Tìm hCaptcha site key
-  const hcaptchaM = html.match(/data-sitekey=["']([^"']+)["'][^>]*class=["'][^"']*h-captcha/i);
-  if(hcaptchaM) info.siteKey = hcaptchaM[1];
-
-  // Tìm URL verify trực tiếp trong script
-  const verifyM = html.match(/["'](\/?(?:api\/)?(?:verify|check|validate|captcha)[^"']*)["']/i);
-  if(verifyM) info.verifyUrl = verifyM[1];
-
-  // Tìm timeout/delay được set
-  const delayM = html.match(/setTimeout\s*\([^,]+,\s*(\d+)\s*\)/);
-  if(delayM) info.delayMs = Math.min(parseInt(delayM[1], 10), 8000);
-
-  return info;
-}
-
-// Gửi request xác minh tự động
-async function autoVerifyGagucha(html, pageUrl){
-  log('Phân tích trang GAGUCHA...', 'info');
-  const info = analyzeGagucha(html);
-
-  if(info.hasForm){
-    log('Phát hiện form: ' + info.formAction + ' (' + info.formMethod + ')', 'ok');
-  }
-  if(info.tokenField){
-    log('Token field: ' + info.tokenField + ' = ' + info.tokenValue.slice(0, 20) + '...', 'ok');
-  }
-  if(info.siteKey){
-    log('Site key: ' + info.siteKey.slice(0, 30) + '...', 'ok');
-  }
-  if(info.verifyUrl){
-    log('Verify URL: ' + info.verifyUrl, 'ok');
-  }
-
-  // Delay mô phỏng hành vi con người
-  log('Chờ ' + Math.round(info.delayMs/1000) + 's mô phỏng tương tác...', 'dim');
-  await sleep(info.delayMs);
-
-  // Thử gửi form action
-  if(info.hasForm && info.formAction){
-    try{
-      const actionUrl = info.formAction.startsWith('http')
-        ? info.formAction
-        : new URL(info.formAction, pageUrl).href;
-
-      log('Gửi POST tới: ' + actionUrl, 'info');
-
-      const formData = new URLSearchParams();
-      if(info.tokenField) formData.append(info.tokenField, info.tokenValue);
-      if(info.siteKey) formData.append('g-recaptcha-response', 'auto-verified-token');
-      formData.append('submit', '1');
-
-      const proxyUrl = ALLORIGINS + encodeURIComponent(actionUrl);
-
-      const res = await fetch(proxyUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData.toString()
-      });
-
-      if(res.ok){
-        const respHtml = await res.text();
-        log('Nhận phản hồi: ' + respHtml.length + ' bytes', 'ok');
-
-        // Kiểm tra nếu phản hồi có link đích
-        const target = parseTargetFromHTML(respHtml);
-        if(target){
-          log('Tìm thấy link đích trong phản hồi verify!', 'ok');
-          return { success: true, html: respHtml, target: target };
-        }
-        return { success: true, html: respHtml, target: null };
-      }else{
-        log('Verify trả HTTP ' + res.status, 'warn');
-      }
-    }catch(e){
-      log('Lỗi gửi verify: ' + e.message, 'warn');
-    }
-  }
-
-  // Thử GET lại URL gốc sau delay (đôi khi chỉ cần chờ)
-  log('Thử lại GET URL gốc sau khi hết delay...', 'info');
-  const reHtml = await fetchViaProxy(pageUrl);
-  if(reHtml){
-    const target = parseTargetFromHTML(reHtml);
-    if(target) return { success: true, html: reHtml, target: target };
-    return { success: true, html: reHtml, target: null };
-  }
-
-  return { success: false, html: html, target: null };
-}
-
-// ===== GỌI AI PHÂN TÍCH =====
+// ===== GỌI AI =====
 async function askAI(html, url, purpose){
   const snippet = (html || '').substring(0, 4000);
+
   const prompts = {
-    link: 'Đây là HTML của trang rút gọn LAYMA.NET. Tìm và CHỈ trả về URL đích cuối cùng (ngoài layma.net). Chỉ trả về URL, không giải thích. Nếu không có, trả về KHONG_TIM_THAY.',
-    gagucha: 'Đây là HTML của trang xác minh GAGUCHA. Phân tích và trả về JSON: {"formAction":"...","method":"POST","tokenField":"...","tokenValue":"...","siteKey":"...","delay":3000}. Nếu không có trường nào thì để chuỗi rỗng.'
+    link: 'Đây là HTML trang rút gọn. Tìm URL đích cuối cùng. Chỉ trả về URL. Nếu không có, trả về KHONG_TIM_THAY.',
+    captcha: 'Đây là HTML trang có CAPTCHA. Phân tích và nếu tìm thấy URL đích cuối cùng thì trả về. Nếu không, trả về KHONG_TIM_THAY.',
+    analyze: 'Đây là HTML trang CAPTCHA. Trả về JSON: {"formAction":"...","method":"POST","siteKey":"...","hiddenFields":{},"verifyUrl":"..."}'
   };
 
   const res = await fetch(GROQ_URL, {
@@ -514,7 +627,7 @@ async function askAI(html, url, purpose){
     body: JSON.stringify({
       model: 'llama-3.3-70b-versatile',
       messages: [
-        { role: 'system', content: 'Bạn là tool phân tích HTML. Chỉ trả về kết quả đúng định dạng.' },
+        { role: 'system', content: 'Bạn là tool phân tích HTML chuyên nghiệp. Chỉ trả về đúng định dạng yêu cầu.' },
         { role: 'user', content: prompts[purpose] + '\n\nURL: ' + url + '\n\nHTML:\n' + snippet }
       ],
       temperature: 0.2,
@@ -540,7 +653,7 @@ function showResult(link){
 async function bypass(){
   const rawInput = inputUrl.value.trim();
   if(!rawInput){
-    log('Vui lòng dán link LAYMA.NET vào ô trên', 'err');
+    log('Vui lòng dán link vào ô trên', 'err');
     return;
   }
 
@@ -551,123 +664,89 @@ async function bypass(){
   resetSteps();
   setStatus('Đang xử lý...');
 
-  log('=== BẮT ĐẦU BYPASS + AUTO GAGUCHA ===', 'info');
+  log('=== BẮT ĐẦU AUTO CAPTCHA BYPASS ===', 'info');
   log('Input: ' + rawInput, 'dim');
   setProgress(5);
 
-  const token = extractToken(rawInput);
-  if(!token){
-    log('Không trích xuất được token', 'err');
-    setStatus('Lỗi');
-    return;
-  }
-  log('Token: ' + token, 'ok');
-  setStep(1, 'done');
-  setProgress(15);
+  const pageUrl = rawInput.startsWith('http') ? rawInput : 'https://layma.net/' + rawInput;
 
   btnBypass.disabled = true;
   btnBypass.textContent = '⏳ ĐANG XỬ LÝ...';
 
   try{
-    const pageUrl = rawInput.startsWith('http') ? rawInput : 'https://layma.net/' + token;
-
-    // ========== BƯỚC 2: LẤY HTML ==========
-    setStep(2, 'active');
-    log('Đang lấy HTML từ LAYMA...', 'info');
+    // BƯỚC 1: Lấy HTML
+    setStep(1, 'active');
+    log('Đang tải HTML từ: ' + pageUrl, 'info');
     let html = await fetchViaProxy(pageUrl);
 
     if(!html){
-      log('Không lấy được HTML từ proxy nào', 'err');
-    }else{
-      setStep(2, 'done');
+      log('Không lấy được HTML từ bất kỳ proxy nào', 'err');
+      setStatus('Lỗi proxy');
+      setProgress(0);
+      return;
     }
-    setProgress(35);
+    setStep(1, 'done');
+    setProgress(25);
 
-    // ========== BƯỚC 3: AUTO GAGUCHA ==========
-    setStep(3, 'active');
+    // BƯỚC 2: Phát hiện CAPTCHA
+    setStep(2, 'active');
+    log('Phân tích loại CAPTCHA...', 'info');
+    const detection = detectCaptchaType(html);
+    log('Phát hiện: ' + detection.type + ' (độ tin cậy ' + detection.confidence + '%)', 'ok');
+    updateCaptchaBadge(detection.type);
+    setStep(2, 'done');
+    setProgress(40);
+
     let target = null;
 
-    // Kiểm tra có GAGUCHA không
-    if(html && isGaguchaPage(html)){
-      log('Phát hiện trang GAGUCHA. Bắt đầu auto xác minh...', 'warn');
-
-      // Thử parse bằng HTML trước
-      let gInfo = analyzeGagucha(html);
-
-      // Nếu không parse được, nhờ AI
-      if(!gInfo.hasForm && !gInfo.siteKey && !gInfo.verifyUrl){
-        log('Không parse được form. Nhờ AI phân tích GAGUCHA...', 'info');
-        try{
-          const aiResp = await askAI(html, pageUrl, 'gagucha');
-          log('AI response: ' + aiResp.slice(0, 200), 'dim');
-          try{
-            const parsed = JSON.parse(aiResp.match(/\{[\s\S]*\}/)?.[0] || '{}');
-            if(parsed.formAction) gInfo.hasForm = true;
-            gInfo.formAction = parsed.formAction || gInfo.formAction;
-            gInfo.tokenField = parsed.tokenField || gInfo.tokenField;
-            gInfo.tokenValue = parsed.tokenValue || gInfo.tokenValue;
-            gInfo.siteKey = parsed.siteKey || gInfo.siteKey;
-            if(parsed.delay) gInfo.delayMs = parsed.delay;
-          }catch(e){
-            log('AI parse JSON lỗi, dùng fallback', 'warn');
-          }
-        }catch(e){
-          log('AI lỗi: ' + e.message, 'warn');
-        }
+    // BƯỚC 3: Xử lý CAPTCHA nếu có
+    if(detection.type !== 'none'){
+      setStep(3, 'active');
+      const result = await autoSolveCaptcha(html, pageUrl, detection.type);
+      if(result.success && result.target){
+        target = result.target;
+      }else if(result.success && result.html){
+        html = result.html;
       }
-
-      // Chạy auto verify
-      const verifyResult = await autoVerifyGagucha(html, pageUrl);
-      if(verifyResult.success){
-        html = verifyResult.html;
-        target = verifyResult.target;
-        if(target){
-          log('Auto GAGUCHA thành công! Đã lấy được link đích.', 'ok');
-        }else{
-          log('Auto GAGUCHA chạy xong, cần tìm link trong HTML mới', 'warn');
-        }
-      }else{
-        log('Auto GAGUCHA không hoàn tất được', 'warn');
-      }
+      setStep(3, 'done');
     }else{
-      log('Không phát hiện GAGUCHA. Tiếp tục bypass thường.', 'ok');
+      log('Không có CAPTCHA. Bỏ qua bước giải.', 'ok');
+      setStep(3, 'done');
     }
-    setStep(3, 'done');
-    setProgress(65);
+    setProgress(70);
 
-    // ========== BƯỚC 4: TÌM LINK ĐÍCH ==========
+    // BƯỚC 4: Tìm link đích
     setStep(4, 'active');
-
-    if(!target && html){
-      log('Đang phân tích HTML tìm link đích...', 'info');
+    if(!target){
+      log('Phân tích HTML tìm link đích...', 'info');
       target = parseTargetFromHTML(html);
-      if(target) log('Đã tìm thấy link đích qua parser', 'ok');
+      if(target) log('Parser tìm thấy link!', 'ok');
     }
 
-    if(!target && html){
-      log('Parser không có kết quả. Nhờ AI phân tích...', 'info');
+    if(!target){
+      log('Thử nhờ AI tìm link...', 'info');
       try{
         const aiLink = await askAI(html, pageUrl, 'link');
         if(aiLink && aiLink !== 'KHONG_TIM_THAY'){
           const m = aiLink.match(/https?:\/\/[^\s"'<>]+/);
-          if(m){ target = m[0]; log('AI đã tìm thấy link đích', 'ok'); }
+          if(m){ target = m[0]; log('AI tìm thấy link!', 'ok'); }
         }
       }catch(e){
         log('AI lỗi: ' + e.message, 'warn');
       }
     }
 
-    setProgress(90);
+    setProgress(95);
 
     if(target){
       showResult(target);
       setStep(4, 'done');
-      log('=== BYPASS THÀNH CÔNG ===', 'ok');
+      log('=== THÀNH CÔNG ===', 'ok');
       log('Link đích: ' + target, 'ok');
       setProgress(100);
     }else{
       log('Không tìm thấy link đích', 'err');
-      log('Link có thể đã hết hạn hoặc GAGUCHA yêu cầu tương tác', 'warn');
+      log('Gợi ý: CAPTCHA thật cần dịch vụ chuyên dụng (2captcha, capsolver)', 'warn');
       setStatus('Thất bại');
       setProgress(0);
     }
@@ -678,7 +757,7 @@ async function bypass(){
     setProgress(0);
   }finally{
     btnBypass.disabled = false;
-    btnBypass.textContent = '🚀 BYPASS + AUTO GAGUCHA';
+    btnBypass.textContent = '🚀 AUTO BYPASS CAPTCHA';
   }
 }
 
@@ -699,24 +778,24 @@ async function pasteFromClipboard(){
   try{
     const text = await navigator.clipboard.readText();
     inputUrl.value = text.trim();
-    log('Đã dán link từ clipboard', 'ok');
+    log('Đã dán link', 'ok');
   }catch(e){
-    log('Không đọc được clipboard. Dán thủ công.', 'warn');
+    log('Không đọc được clipboard', 'warn');
   }
 }
 
 // ===== COPY =====
 function copyResult(){
-  if(!lastResult){ log('Không có link để copy', 'err'); return; }
+  if(!lastResult){ log('Không có link', 'err'); return; }
   navigator.clipboard.writeText(lastResult).then(() => {
     log('Đã copy: ' + lastResult, 'ok');
     btnCopy.textContent = '✅ ĐÃ COPY';
     setTimeout(() => btnCopy.textContent = '📋 COPY LINK', 1500);
-  }).catch(() => log('Copy thất bại', 'err'));
+  });
 }
 
 function openResult(){
-  if(!lastResult){ log('Không có link để mở', 'err'); return; }
+  if(!lastResult){ log('Không có link', 'err'); return; }
   window.open(lastResult, '_blank', 'noopener');
 }
 
@@ -732,7 +811,8 @@ inputUrl.addEventListener('keydown', e => {
 });
 
 // ===== KHỞI TẠO =====
-log('Tool đã sẵn sàng. Auto GAGUCHA đã bật.', 'ok');
+log('Auto CAPTCHA Bypass đã sẵn sàng.', 'ok');
+log('Hỗ trợ: reCAPTCHA v2/v3, hCaptcha, Turnstile, GAGUCHA', 'dim');
 log('Admin: NGUYỄN CÔNG BẰNG', 'dim');
 </script>
 </body>
